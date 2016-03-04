@@ -1,17 +1,18 @@
-InnoTech-alpine-basic
+alpine-base
 =====================
 
-See the wiki  http://cfwiki.innotechapp.com/mediawiki/index.php/Docker_images to see how we build images.
+A base image to run anything. It's based in alpine linux 3.3, adding basic packages bash openssl curl
 
-Builds a alpine-basic image with extra packages installed (bash openssl curl) and cloudframe ca.
-
-```
-docker build -t <repo>/alpine-basic:<version> .
-```
-
-To run:
+## Build
 
 ```
-docker run -it <repo>/alpine-basic:<version> 
+docker build -t rawmind/alpine-basic:<version> .
 ```
 
+## Versions
+
+- `0.3.3` [(Dockerfile)](https://github.com/rawmind0/docker-alpine/blob/master/alpine-base/Dockerfile)
+
+## Usage
+
+To use this image include `FROM rawmind/alpine-monit` at the top of your `Dockerfile`.
