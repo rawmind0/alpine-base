@@ -1,1 +1,1 @@
-docker build -t rawmind/alpine-basic:$(cat verion) .
+docker build -t rawmind/alpine-base:$(cat version) .
