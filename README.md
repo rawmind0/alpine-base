@@ -13,6 +13,7 @@ docker build -t rawmind/alpine-base:<version> .
 
 ## Versions
 
+- `3.6` [(Dockerfile)](https://github.com/rawmind0/alpine-base/blob/3.6/Dockerfile).
 - `3.5-1` [(Dockerfile)](https://github.com/rawmind0/alpine-base/blob/3.5-1/Dockerfile).
 - `0.3.4-1` [(Dockerfile)](https://github.com/rawmind0/alpine-base/blob/0.3.4-1/Dockerfile).
 - `0.3.3` [(Dockerfile)](https://github.com/rawmind0/alpine-base/blob/0.3.3/Dockerfile).

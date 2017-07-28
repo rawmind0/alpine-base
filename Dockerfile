@@ -1,4 +1,4 @@
-FROM docker.io/alpine:3.5
+FROM docker.io/alpine:3.6
 MAINTAINER Raul Sanchez <rawmind@gmail.com>
 
 # Install selfsigned ca (optional)
