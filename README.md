@@ -8,7 +8,7 @@ A base image to run anything. It's based in alpine 3.x, adding basic software ba
 ## Build
 
 ```
-docker build -t rawmind/alpine-base:<version> .
+./build.sh
 ```
 
 ## Versions
