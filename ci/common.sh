@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 function log {
-        echo `date` $ME - $@
+        echo $ME - $@
 }
 
 function getRev {

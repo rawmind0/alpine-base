@@ -6,7 +6,7 @@ cd $parent_path
 source common.sh
 
 log "Testing ${DOCKER_TAG}:${TAG}..."
-CHECK=$(docker run -it --rm ${DOCKER_TAG}:${TAG} cat /etc/alpine-release )
+CHECK=$(docker run -t --rm ${DOCKER_TAG}:${TAG} cat /etc/alpine-release )
 rc=$?
 if [ $rc -eq 0 ]; then
 	CHECK_VER=$(echo ${CHECK} | cut -d. -f1,2 )
