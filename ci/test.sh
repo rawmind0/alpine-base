@@ -16,6 +16,7 @@ if [ $rc -eq 0 ]; then
 		log "[Error]: testing ${DOCKER_TAG}:${TAG} got $CHECK_VER expected $VERSION"
 		exit 1
 	fi
+else
+	log "[Error]: running ${DOCKER_TAG}:${TAG}"
 fi
-log "[Error]: running ${DOCKER_TAG}:${TAG}"
 exit $rc
