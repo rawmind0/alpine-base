@@ -1,7 +1,15 @@
 #!/usr/bin/env bash
 
 function log {
-        echo $ME - $@
+    echo $ME - $@
+}
+
+function sourceFile {
+    if [ -f "$1" ]; then
+		source $1
+	else 
+		log "[Error]: File $1 don't exists."
+	fi
 }
 
 function getRev {
@@ -19,19 +27,21 @@ function getRev {
 	echo $rev
 }
 
+parent_path=$( cd "$(dirname ${BASH_SOURCE[0]})" ; pwd -P )
+cd $parent_path
+
 VERSION=${VERSION:-$(cat version)}
 DOCKER_USER=${DOCKER_USER:-"rawmind"}
 DOCKER_NAME=${DOCKER_NAME:-"alpine-base"}
-DOCKER_TAG=${DOCKER_TAG:-${DOCKER_USER}"/"${DOCKER_NAME}}
 
 if [ -z "${TAG}" ]; then
 	REVISION=$(getRev ${VERSION})
 	TAG=${VERSION}"-"${REVISION}
 fi
 
+DOCKER_IMAGE=${DOCKER_IMAGE:-${DOCKER_USER}"/"${DOCKER_NAME}":"${TAG}}
+
 cat << EOF > build_version
-VERSION=${VERSION}
-DOCKER_USER=${DOCKER_USER}
-DOCKER_TAG=${DOCKER_TAG}
+DOCKER_IMAGE=${DOCKER_IMAGE}
 TAG=${TAG}
 EOF
