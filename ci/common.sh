@@ -29,7 +29,7 @@ if [ -z "${TAG}" ]; then
 	TAG=${VERSION}"-"${REVISION}
 fi
 
-cat << EOF > env-$TAG.build
+cat << EOF > build_version
 VERSION=${VERSION}
 DOCKER_USER=${DOCKER_USER}
 DOCKER_TAG=${DOCKER_TAG}
