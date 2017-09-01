@@ -31,6 +31,7 @@ git tag ${TAG}
 checkError $?
 
 log "Pushing git tags ${TAG} ..."
+git remote add origin ${GITHUB_REPO}
 git push origin master --tags
 checkError $?
 
