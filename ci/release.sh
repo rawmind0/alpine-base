@@ -20,15 +20,15 @@ fi
 
 log "Pushing ${DOCKER_IMAGE} ..."
 docker push ${DOCKER_IMAGE}
-#checkError $?
+checkError $?
 
 log "Tagging git repo ${TAG} ..."
 git tag ${TAG}
-#checkError $?
+checkError $?
 
 log "Pushing git tags ${TAG} ..."
 git push origin master --tags
-#checkError $?
+checkError $?
 
 log "OK"
 exit 0
