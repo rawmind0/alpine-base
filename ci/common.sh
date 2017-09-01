@@ -1,7 +1,15 @@
 #!/usr/bin/env bash
 
 function log {
-    echo $ME - $@
+    echo $@
+}
+
+function checkError {
+	if [ $1 -ne 0 ]; then
+		log "ERROR"
+		exit $1
+	fi
+	log "OK"
 }
 
 function sourceFile {
@@ -28,11 +36,11 @@ function getRev {
 }
 
 parent_path=$( cd "$(dirname ${BASH_SOURCE[0]})" ; pwd -P )
-cd $parent_path
 
-VERSION=${VERSION:-$(cat version)}
+VERSION=${VERSION:-$(cat $parent_path/version)}
 DOCKER_USER=${DOCKER_USER:-"rawmind"}
 DOCKER_NAME=${DOCKER_NAME:-"alpine-base"}
+DOCKER_FILE=${DOCKER_FILE:-$parent_path"/docker_image"}
 
 if [ -z "${TAG}" ]; then
 	REVISION=$(getRev ${VERSION})
@@ -41,7 +49,7 @@ fi
 
 DOCKER_IMAGE=${DOCKER_IMAGE:-${DOCKER_USER}"/"${DOCKER_NAME}":"${TAG}}
 
-cat << EOF > build_version
+cat << EOF > $parent_path/build_version
 DOCKER_IMAGE=${DOCKER_IMAGE}
 TAG=${TAG}
 EOF

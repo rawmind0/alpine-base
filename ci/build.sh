@@ -7,19 +7,21 @@ if [ -n "$1" ]; then
 	sourceFile "$1"
 fi
 
+log "Getting git tag ${TAG} ..."
 CHECK_TAG=$(git tag -l ${TAG})
+checkError $?
 
-if [ -z "${CHECK_TAG}" ]; then 
-	log "Building ${DOCKER_IMAGE}:..."
-	docker build -t ${DOCKER_IMAGE} ../ 
-	rc=$?
-	if [ $rc -eq 0 ]; then
-		log "OK"
-	else
-		log "[Error]: building ${DOCKER_IMAGE}"		
-	fi
-	exit $rc
-else
+if [ -n "${CHECK_TAG}" ]; then 
 	log "[Error]: git tag ${TAG} already exists"
 	exit 1
 fi
+
+log "Building ${DOCKER_IMAGE} ..."
+docker build -t ${DOCKER_IMAGE} .
+checkError $?
+
+log "Saving ${DOCKER_IMAGE} ..."
+docker save -o ${DOCKER_FILE} ${DOCKER_IMAGE}
+checkError $?
+
+exit 0
