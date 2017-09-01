@@ -39,6 +39,7 @@ parent_path=$( cd "$(dirname ${BASH_SOURCE[0]})" ; pwd -P )
 
 VERSION=${VERSION:-$(cat $parent_path/version)}
 DOCKER_USER=${DOCKER_USER:-"rawmind"}
+DOCKER_PASS=${DOCKER_PASS:-"password"}
 DOCKER_NAME=${DOCKER_NAME:-"alpine-base"}
 DOCKER_FILE=${DOCKER_FILE:-$parent_path"/docker_image"}
 

@@ -18,6 +18,10 @@ if [ "$exist_image" -ne "1" ]; then
 	checkError $?
 fi
 
+log "Login to docker registry as ${DOCKER_USER} ..."
+docker login -u ${DOCKER_USER} -p ${DOCKER_PASS}
+checkError $?
+
 log "Pushing ${DOCKER_IMAGE} ..."
 docker push ${DOCKER_IMAGE}
 checkError $?
