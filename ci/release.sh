@@ -19,15 +19,15 @@ if [ "$exist_image" -ne "1" ]; then
 fi
 
 log "Pushing ${DOCKER_IMAGE} ..."
-echo docker push ${DOCKER_IMAGE}
+docker push ${DOCKER_IMAGE}
 #checkError $?
 
 log "Tagging git repo ${TAG} ..."
-echo git tag ${TAG}
+git tag ${TAG}
 #checkError $?
 
 log "Pushing git tags ${TAG} ..."
-echo git push origin master --tags
+git push origin master --tags
 #checkError $?
 
 log "OK"
