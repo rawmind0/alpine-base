@@ -13,16 +13,16 @@ checkError $?
 
 exist_image=$(echo $list_image | wc -l)
 if [ "$exist_image" -ne "1" ]; then
-	log "Loading ${DOCKER_IMAGE}..."
+	log "Loading ${DOCKER_IMAGE} ..."
 	docker load -i ${DOCKER_FILE}
 	checkError $?
 fi
 
-log "Running ${DOCKER_IMAGE}..."
+log "Running ${DOCKER_IMAGE} ..."
 CHECK=$(docker run -t --rm ${DOCKER_IMAGE} cat /etc/alpine-release )
 checkError $?
 
-log "Testing ${DOCKER_IMAGE}..."
+log "Testing ${DOCKER_IMAGE} ..."
 CHECK_VER=$(echo ${CHECK} | cut -d. -f1,2 )
 EXPECTED_VER=$(echo ${TAG} | cut -d"-" -f1)
 
