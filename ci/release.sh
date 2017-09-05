@@ -14,7 +14,14 @@ checkError $?
 exist_image=$(echo $list_image | wc -l)
 if [ "$exist_image" -ne "1" ]; then
 	log "Loading ${DOCKER_IMAGE}..."
-	docker load -i ${DOCKER_FILE}
+	docker load -i ${DOCKER_ARCHIVE}
+	checkError $?
+fi
+
+log "Checking git Dockerfile changes ${TAG} ..."
+if [ "$(git status --porcelain | grep Dockerfile; echo $?)" -eq "0" ]; then 
+	log "Commiting git Dockerfile changes ${TAG} ..."
+	git commit -am ""
 	checkError $?
 fi
 
@@ -35,5 +42,8 @@ log "Pushing docker ${DOCKER_IMAGE} ..."
 docker push ${DOCKER_IMAGE}
 checkError $?
 
+cat << EOF > $parent_path/released_version
+DOCKER_FROM=${DOCKER_IMAGE}
+EOF
 log "OK"
 exit 0

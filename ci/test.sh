@@ -14,7 +14,7 @@ checkError $?
 exist_image=$(echo $list_image | wc -l)
 if [ "$exist_image" -ne "1" ]; then
 	log "Loading ${DOCKER_IMAGE} ..."
-	docker load -i ${DOCKER_FILE}
+	docker load -i ${DOCKER_ARCHIVE}
 	checkError $?
 fi
 

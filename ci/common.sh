@@ -41,7 +41,7 @@ VERSION=${VERSION:-$(cat $parent_path/version)}
 DOCKER_USER=${DOCKER_USER:-"rawmind"}
 DOCKER_PASS=${DOCKER_PASS:-"password"}
 DOCKER_NAME=${DOCKER_NAME:-"alpine-base"}
-DOCKER_FILE=${DOCKER_FILE:-$parent_path"/docker_image"}
+DOCKER_ARCHIVE=${DOCKER_ARCHIVE:-$parent_path"/docker_image"}
 GITHUB_TOKEN=${GITHUB_TOKEN:-"TOKEN"}
 GITHUB_REPO=${GIT_REPO:-"https://x-access-token:"${GITHUB_TOKEN}"@github.com/rawmind0/alpine-base.git"}
 

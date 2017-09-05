@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+if [ -n "$1" ]; then
+	if [ -f "$1" ]; then
+		source $1
+	fi
+fi
+
+DOCKER_FILE=${DOCKER_FILE:-"Dockerfile"}
+DOCKER_FROM=${DOCKER_FROM:-"docker.io/alpine:3.6"}
+
+cat << EOF > ${DOCKER_FILE}
+FROM ${DOCKER_FROM}
+MAINTAINER Raul Sanchez <rawmind@gmail.com>
+
+# Install selfsigned ca (optional)
+# COPY <ca.crt> /etc/ssl/certs/<ca.pem>
+# Install basic packages 
+RUN apk add --update bash libressl curl fping libcap && rm -rf /var/cache/apk/* && mkdir /opt 
+EOF
