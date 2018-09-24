@@ -7,7 +7,7 @@ if [ -n "$1" ]; then
 fi
 
 DOCKER_FILE=${DOCKER_FILE:-"Dockerfile"}
-DOCKER_FROM=${DOCKER_FROM:-"docker.io/alpine:3.6"}
+DOCKER_FROM=${DOCKER_FROM:-"docker.io/alpine:3.7"}
 
 cat << EOF > ${DOCKER_FILE}
 FROM ${DOCKER_FROM}
