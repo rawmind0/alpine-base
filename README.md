@@ -13,7 +13,9 @@ ci/build.sh
 
 ## Versions
 
-- `3.8-0` [(Dockerfile)](https://github.com/rawmind0/alpine-base/blob/3.8-0/Dockerfile).
+- `3.10-1` [(Dockerfile)](https://github.com/rawmind0/alpine-base/blob/3.10-1/Dockerfile).
+- `3.9-0` [(Dockerfile)](https://github.com/rawmind0/alpine-base/blob/3.9-0/Dockerfile).
+- `3.8-1` [(Dockerfile)](https://github.com/rawmind0/alpine-base/blob/3.8-1/Dockerfile).
 - `3.7-1` [(Dockerfile)](https://github.com/rawmind0/alpine-base/blob/3.7-1/Dockerfile).
 - `3.6-8` [(Dockerfile)](https://github.com/rawmind0/alpine-base/blob/3.6-8/Dockerfile).
 - `3.5-1` [(Dockerfile)](https://github.com/rawmind0/alpine-base/blob/3.5-1/Dockerfile).
